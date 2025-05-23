@@ -1,10 +1,12 @@
-
 import streamlit as st
 import google.generativeai as genai
+# import os # You don't need 'os' or 'dotenv' for secrets on Streamlit Cloud
+# from dotenv import load_dotenv # You don't need 'dotenv' for secrets on Streamlit Cloud
+# load_dotenv() ## loading all the environment variables (Not needed for Streamlit Cloud secrets)
 
-# Configure API key from environment variables
-# IMPORTANT: Make sure your .env file has GOOGLE_API_KEY="YOUR_API_KEY"
-genai.configure(api_key=st.secerts["GOOGLE_API_KEY"])
+# Configure API key using Streamlit's secrets management
+# This is the correct way to access secrets in Streamlit Cloud
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 ## Function to load Gemini Flash model and get responses
 # Using 'models/gemini-1.5-flash' as per your last successful model
